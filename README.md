@@ -8,6 +8,5 @@ ng build
 ng serve (opciono)
 ```
 
-Backend se nalazi na repozitorijumu:
+Backend se nalazi na repozitorijumu https://github.com/imilos/toh-backend-flask .
 
-https://github.com/imilos/toh-backend-flask
