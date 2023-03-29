@@ -1,0 +1,8 @@
+<div *ngIf="messageService.messages.length">
+
+    <h2>Poruke</h2>
+    <button type="button" class="btn btn-secondary"
+            (click)="messageService.clear()">Obriši poruke</button>
+    <div *ngFor="let poruka of messageService.messages"> {{poruka}} </div>
+  
+  </div>

@@ -1,0 +1,8 @@
+<h2>Najveći junaci</h2>
+<div class="navbar">
+    <button *ngFor="let junak of heroes" 
+    class="btn btn-info"
+    routerLink="/detail/{{junak.id}}" class="nav-link">
+        {{junak.name}}
+</button>
+</div>

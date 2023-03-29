@@ -1,0 +1,13 @@
+<div *ngIf="hero" class="card">
+
+    <h2 class="card-title">{{hero.name | uppercase}} informacije</h2>
+    <div><span>id: </span>{{hero.id}}</div>
+    <div>
+        <label for="hero-name" class="form-label">Ime junaka: </label>
+        <input id="hero-name" [(ngModel)]="hero.name" placeholder="name" class="form-control">
+    </div>
+    <button class="btn btn-primary" (click)="save()">Sačuvaj</button>
+    <button class="btn btn-secondary" (click)="goBack()">Nazad</button>
+
+</div>
+

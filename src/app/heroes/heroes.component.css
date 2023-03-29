@@ -1,0 +1,7 @@
+ul {
+    list-style-type: none;
+  }
+
+.custom {
+    width: 150px !important;
+}

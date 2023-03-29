@@ -1,0 +1,30 @@
+<h2>Moji junaci</h2>
+
+<div class="container">
+  <div class="row">
+
+    <div class="col">
+      <ul class="heroes">
+        <div class="d-grid gap-2 d-md-block">
+          <li *ngFor="let hero of heroes">
+            <a class="btn btn-primary custom" routerLink="/detail/{{hero.id}}">
+              <span class="badge bg-secondary">{{hero.id}}</span>
+              <span>{{hero.name}}</span>
+            </a>
+            <a class="btn btn-danger" (click)="delete(hero)">x</a>
+          </li>
+        </div>
+      </ul>
+    </div>
+
+    <div class="col">
+      <label for="new-hero">Ime junaka: </label>
+      <input id="new-hero" #heroName />
+
+      <!-- (click) passes input value to add() and then clears the input -->
+      <button class="btn btn-secondary" (click)="add(heroName.value); heroName.value=''">
+        Dodaj junaka
+      </button>
+    </div>
+
+  </div>
