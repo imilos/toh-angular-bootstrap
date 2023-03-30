@@ -3,24 +3,27 @@ import { Hero } from '../hero'
 //import { HEROES } from '../mock-heroes';
 import { HeroService } from '../hero.service';
 import { MessageService } from '../message.service';
+import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-heroes',
   templateUrl: './heroes.component.html',
-  styleUrls: ['./heroes.component.css'], 
+  styleUrls: ['./heroes.component.css'],
 })
 
 export class HeroesComponent {
   heroes: Hero[] = [];
   selectedHero?: Hero;
+  closeResult: string = '';
 
   // Dependency injection
-  constructor(private heroService: HeroService, 
-    private messageService: MessageService) {}
+  constructor(private heroService: HeroService,
+    private modalService: NgbModal,
+    private messageService: MessageService) { }
 
   getHeroes(): void {
     this.heroService.getHeroes()
-    .subscribe(junaci=>this.heroes = junaci);
+      .subscribe(junaci => this.heroes = junaci);
   }
 
   add(name: string): void {
@@ -33,12 +36,19 @@ export class HeroesComponent {
   }
 
   delete(hero: Hero) {
-    this.heroes = this.heroes.filter(h => h!== hero);
+    this.heroes = this.heroes.filter(h => h !== hero);
     this.heroService.deleteHero(hero.id).subscribe();
   }
 
-  ngOnInit() : void {
+  ngOnInit(): void {
     this.getHeroes();
+  }
+
+  open(content: any, hero: Hero) {
+    this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {
+      this.closeResult = result;
+      if (result=='obrisi') this.delete(hero);
+    }, _ => {});
   }
 
 }

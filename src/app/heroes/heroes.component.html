@@ -11,7 +11,7 @@
               <span class="badge bg-secondary">{{hero.id}}</span>
               <span>{{hero.name}}</span>
             </a>
-            <a class="btn btn-danger" (click)="delete(hero)">x</a>
+            <button class="btn btn-danger" (click)="open(mymodal, hero)">X</button>
           </li>
         </div>
       </ul>
@@ -26,5 +26,21 @@
         Dodaj junaka
       </button>
     </div>
-
   </div>
+
+
+
+  <ng-template #mymodal let-modal>
+    <div style="z-index: 1041;" >
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Potvrda brisanja</h4>
+    </div>
+    <div class="modal-body">
+      Želite li da obrišete junaka?
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-danger" (click)="modal.close('obrisi')">Da</button>
+      <button type="button" class="btn btn-secondary" ngbAutofocus (click)="modal.close('odustani')">Odustani</button>
+    </div>
+    </div>
+  </ng-template>
