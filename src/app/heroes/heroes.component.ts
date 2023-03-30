@@ -15,6 +15,7 @@ export class HeroesComponent {
   heroes: Hero[] = [];
   selectedHero?: Hero;
   closeResult: string = '';
+  PORUKA_BRISANJE: string = '';
 
   // Dependency injection
   constructor(private heroService: HeroService,
@@ -45,10 +46,19 @@ export class HeroesComponent {
   }
 
   open(content: any, hero: Hero) {
+
+    this.PORUKA_BRISANJE = `Da li želite da obrišete ${hero.name}?`;
+
     this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {
       this.closeResult = result;
       if (result=='obrisi') this.delete(hero);
     }, _ => {});
+    
   }
 
+}
+
+export class CustomModalOptions {
+  stringProp?: string; 
+  numberProp?: number;
 }
